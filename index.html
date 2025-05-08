@@ -4,83 +4,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Excursions à Madagascar avec Endless Cruises & Tours. Découvrez les circuits en bateau et en véhicule." />
-  <meta name="keywords" content="Madagascar, excursions, tours, vacances, aventure, îles, Nosy Be" />
-  <meta name="author" content="Endless Cruises & Tours" />
-  <title>Endless Cruises & Tours - Découvrez Madagascar</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Excursions et croisières à Madagascar - Endless Cruises & Tours" />
+  <title>Endless Cruises & Tours</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e6f9ff;
+      color: #003344;
+    }
+    header {
+      background-color: #00aaff;
+      padding: 1rem;
+      color: white;
+      text-align: center;
+    }
+    nav {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    nav select {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+    .hero {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+    }
+    .hero img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    footer {
+      background-color: #00aaff;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
-
 <body>
-  <!-- HEADER -->
   <header>
-    <h1>Endless Cruises & Tours</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="circuits.html">Nos Circuits</a></li>
-        <li><a href="contact.html">Contact et Réservation</a></li>
-      </ul>
-    </nav>
+    <h1 id="title">Endless Cruises & Tours</h1>
+    <p id="subtitle">Découvrez Madagascar autrement</p>
   </header>
 
-  <!-- PAGE ACCUEIL -->
-  <section id="accueil">
-    <h2>Bienvenue à Endless Cruises & Tours</h2>
-    <p>Explorez Madagascar à travers nos circuits en bateau et en véhicule. Des excursions inoubliables à Nosy Be et au-delà.</p>
-    <div class="photos">
-      <img src="images/bateau1.jpg" alt="Excursion en bateau à Nosy Be" />
-      <img src="images/paysage1.jpg" alt="Paysage de Madagascar" />
+  <nav>
+    <label for="language">🌐</label>
+    <select id="language" onchange="setLanguage(this.value)">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <img src="https://via.placeholder.com/800x400?text=Madagascar+Tour" alt="Tour Image" />
     </div>
-  </section>
+    <h2 id="welcome">Bienvenue sur notre site</h2>
+    <p id="intro">Nous proposons des circuits et croisières inoubliables à Madagascar. Réservez dès maintenant !</p>
+  </main>
 
-  <!-- PAGE CIRCUITS -->
-  <section id="circuits">
-    <h2>Nos Circuits</h2>
-    <p>Découvrez Nosy Be et ses alentours avec nos circuits adaptés à toutes les envies : aventure, détente, découverte culturelle...</p>
-    <ul>
-      <li>
-        <h3>Circuit Aventure à Nosy Be</h3>
-        <p>Explorez les paysages spectaculaires de Nosy Be en bateau et en véhicule tout-terrain.</p>
-        <img src="images/circuit1.jpg" alt="Circuit aventure Nosy Be" />
-      </li>
-      <li>
-        <h3>Circuit Détente et Culture</h3>
-        <p>Profitez des plages paradisiaques et découvrez la culture locale à travers des visites guidées.</p>
-        <img src="images/circuit2.jpg" alt="Circuit détente Madagascar" />
-      </li>
-    </ul>
-  </section>
-
-  <!-- PAGE CONTACT ET RÉSERVATION -->
-  <section id="contact">
-    <h2>Contactez-nous et Réservez</h2>
-    <p>Nous vous répondrons dans les plus brefs délais. Utilisez le formulaire ci-dessous ou contactez-nous via WhatsApp.</p>
-    <form action="https://formspree.io/f/xyzzzz" method="POST">
-      <label for="name">Nom :</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="email">Email :</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="message">Message :</label>
-      <textarea id="message" name="message" required></textarea>
-
-      <button type="submit">Envoyer</button>
-    </form>
-
-    <div>
-      <p>Ou contactez-nous directement sur <a href="https://wa.me/261342842256">WhatsApp</a></p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Endless Cruises & Tours - Tous droits réservés</p>
-    <p>Site créé par : Léo Médias Groupe</p>
+    <p>&copy; 2025 Endless Cruises & Tours</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const translations = {
+      fr: {
+        title: "Endless Cruises & Tours",
+        subtitle: "Découvrez Madagascar autrement",
+        welcome: "Bienvenue sur notre site",
+        intro: "Nous proposons des circuits et croisières inoubliables à Madagascar. Réservez dès maintenant !"
+      },
+      en: {
+        title: "Endless Cruises & Tours",
+        subtitle: "Discover Madagascar differently",
+        welcome: "Welcome to our website",
+        intro: "We offer unforgettable tours and cruises in Madagascar. Book now!"
+      },
+      de: {
+        title: "Endless Cruises & Tours",
+        subtitle: "Entdecken Sie Madagaskar anders",
+        welcome: "Willkommen auf unserer Webseite",
+        intro: "Wir bieten unvergessliche Touren und Kreuzfahrten in Madagaskar an. Jetzt buchen!"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.getElementById("title").textContent = translations[lang].title;
+      document.getElementById("subtitle").textContent = translations[lang].subtitle;
+      document.getElementById("welcome").textContent = translations[lang].welcome;
+      document.getElementById("intro").textContent = translations[lang].intro;
+    }
+  </script>
 </body>
 </html>
