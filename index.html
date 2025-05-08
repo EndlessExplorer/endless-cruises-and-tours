@@ -1,13 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Excursions à Madagascar en bateau ou en véhicule avec Endless Cruises & Tours." />
-  <title>Endless Cruises & Tours</title>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Excursions à Madagascar avec Endless Cruises & Tours. Découvrez les circuits en bateau et en véhicule." />
+  <meta name="keywords" content="Madagascar, excursions, tours, vacances, aventure, îles, Nosy Be" />
+  <meta name="author" content="Endless Cruises & Tours" />
+  <title>Endless Cruises & Tours - Découvrez Madagascar</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <!-- HEADER -->
   <header>
@@ -15,29 +19,66 @@
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="circuits.html">Circuits</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="circuits.html">Nos Circuits</a></li>
+        <li><a href="contact.html">Contact et Réservation</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- CONTENU PRINCIPAL -->
-  <main>
-    <section id="slideshow">
-      <img src="images/bateau1.jpg" alt="Excursion en bateau à Madagascar" />
-      <img src="images/bateau2.jpg" alt="Vue panoramique" />
-    </section>
+  <!-- PAGE ACCUEIL -->
+  <section id="accueil">
+    <h2>Bienvenue à Endless Cruises & Tours</h2>
+    <p>Explorez Madagascar à travers nos circuits en bateau et en véhicule. Des excursions inoubliables à Nosy Be et au-delà.</p>
+    <div class="photos">
+      <img src="images/bateau1.jpg" alt="Excursion en bateau à Nosy Be" />
+      <img src="images/paysage1.jpg" alt="Paysage de Madagascar" />
+    </div>
+  </section>
 
-    <section>
-      <h2>Bienvenue</h2>
-      <p>Explorez Madagascar et ses îles avec nos excursions en bateau ou en véhicule, en toute sérénité.</p>
-    </section>
-  </main>
+  <!-- PAGE CIRCUITS -->
+  <section id="circuits">
+    <h2>Nos Circuits</h2>
+    <p>Découvrez Nosy Be et ses alentours avec nos circuits adaptés à toutes les envies : aventure, détente, découverte culturelle...</p>
+    <ul>
+      <li>
+        <h3>Circuit Aventure à Nosy Be</h3>
+        <p>Explorez les paysages spectaculaires de Nosy Be en bateau et en véhicule tout-terrain.</p>
+        <img src="images/circuit1.jpg" alt="Circuit aventure Nosy Be" />
+      </li>
+      <li>
+        <h3>Circuit Détente et Culture</h3>
+        <p>Profitez des plages paradisiaques et découvrez la culture locale à travers des visites guidées.</p>
+        <img src="images/circuit2.jpg" alt="Circuit détente Madagascar" />
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE CONTACT ET RÉSERVATION -->
+  <section id="contact">
+    <h2>Contactez-nous et Réservez</h2>
+    <p>Nous vous répondrons dans les plus brefs délais. Utilisez le formulaire ci-dessous ou contactez-nous via WhatsApp.</p>
+    <form action="https://formspree.io/f/xyzzzz" method="POST">
+      <label for="name">Nom :</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email :</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message :</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Envoyer</button>
+    </form>
+
+    <div>
+      <p>Ou contactez-nous directement sur <a href="https://wa.me/261342842256">WhatsApp</a></p>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>Contact : <a href="mailto:amidanypatrick@gmail.com">amidanypatrick@gmail.com</a> | +261 34 28 42 256</p>
-    <p>Site created by: Léo Medias Groupe</p>
+    <p>© 2025 Endless Cruises & Tours - Tous droits réservés</p>
+    <p>Site créé par : Léo Médias Groupe</p>
   </footer>
 
   <script src="script.js"></script>
