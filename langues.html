@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choix de la langue</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      text-align: center;
+      padding: 50px;
+    }
+    .flags {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .flag {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      transition: transform 0.2s ease-in-out;
+    }
+    .flag:hover {
+      transform: scale(1.1);
+    }
+    .flag img {
+      width: 48px;
+      height: 32px;
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>Choisissez votre langue</h1>
+  <div class="flags">
+    <a href="?lang=fr" class="flag">
+      <img src="https://flagcdn.com/fr.svg" alt="Français" />
+      <span>FR</span>
+    </a>
+    <a href="?lang=en" class="flag">
+      <img src="https://flagcdn.com/gb.svg" alt="English" />
+      <span>EN</span>
+    </a>
+    <a href="?lang=de" class="flag">
+      <img src="https://flagcdn.com/de.svg" alt="Deutsch" />
+      <span>DE</span>
+    </a>
+    <a href="?lang=it" class="flag">
+      <img src="https://flagcdn.com/it.svg" alt="Italiano" />
+      <span>IT</span>
+    </a>
+    <a href="?lang=mg" class="flag">
+      <img src="https://flagcdn.com/mg.svg" alt="Malagasy" />
+      <span>MG</span>
+    </a>
+  </div>
+</body>
+</html>
