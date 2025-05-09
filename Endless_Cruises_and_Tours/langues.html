@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sélecteur de langue</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+    .lang-select {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .lang-select a {
+      text-decoration: none;
+    }
+    .lang-select img {
+      width: 32px;
+      height: 20px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-select">
+    <a href="?lang=fr" title="Français"><img src="images/fr.png" alt="Français"></a>
+    <a href="?lang=en" title="English"><img src="images/en.png" alt="English"></a>
+    <a href="?lang=de" title="Deutsch"><img src="images/de.png" alt="Deutsch"></a>
+    <a href="?lang=it" title="Italiano"><img src="images/it.png" alt="Italiano"></a>
+    <a href="?lang=mg" title="Malagasy"><img src="images/mg.png" alt="Malagasy"></a>
+  </div>
+</body>
+</html>
