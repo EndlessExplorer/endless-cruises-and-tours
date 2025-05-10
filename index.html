@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script type="text/javascript">
         var gk_isXlsx = false;
         var gk_xlsxFileLookup = {};
@@ -252,3 +253,115 @@
   </script>
 </body>
 </html>
+=======
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Excursions et croisières à Madagascar - Endless Cruises & Tours" />
+  <title>Endless Cruises & Tours</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e6f9ff;
+      color: #003344;
+    }
+    header {
+      background-color: #00aaff;
+      padding: 1rem;
+      color: white;
+      text-align: center;
+    }
+    nav {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    nav select {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+    .hero {
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+    }
+    .hero img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    footer {
+      background-color: #00aaff;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">Endless Cruises & Tours</h1>
+    <p id="subtitle">Découvrez Madagascar autrement</p>
+  </header>
+
+  <nav>
+    <label for="language">🌐</label>
+    <select id="language" onchange="setLanguage(this.value)">
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <img src="https://via.placeholder.com/800x400?text=Madagascar+Tour" alt="Tour Image" />
+    </div>
+    <h2 id="welcome">Bienvenue sur notre site</h2>
+    <p id="intro">Nous proposons des circuits et croisières inoubliables à Madagascar. Réservez dès maintenant !</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Endless Cruises & Tours</p>
+  </footer>
+
+  <script>
+    const translations = {
+      fr: {
+        title: "Endless Cruises & Tours",
+        subtitle: "Découvrez Madagascar autrement",
+        welcome: "Bienvenue sur notre site",
+        intro: "Nous proposons des circuits et croisières inoubliables à Madagascar. Réservez dès maintenant !"
+      },
+      en: {
+        title: "Endless Cruises & Tours",
+        subtitle: "Discover Madagascar differently",
+        welcome: "Welcome to our website",
+        intro: "We offer unforgettable tours and cruises in Madagascar. Book now!"
+      },
+      de: {
+        title: "Endless Cruises & Tours",
+        subtitle: "Entdecken Sie Madagaskar anders",
+        welcome: "Willkommen auf unserer Webseite",
+        intro: "Wir bieten unvergessliche Touren und Kreuzfahrten in Madagaskar an. Jetzt buchen!"
+      }
+    };
+
+    function setLanguage(lang) {
+      document.getElementById("title").textContent = translations[lang].title;
+      document.getElementById("subtitle").textContent = translations[lang].subtitle;
+      document.getElementById("welcome").textContent = translations[lang].welcome;
+      document.getElementById("intro").textContent = translations[lang].intro;
+    }
+  </script>
+</body>
+</html>
+>>>>>>> 51cdd38cbdb63825cae8ff67f0989b1d8b752fd9
