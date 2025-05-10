@@ -1,0 +1,74 @@
+{
+  "fr": {
+    "home": "Accueil",
+    "circuits": "Circuits",
+    "contact": "Contact/Réservation",
+    "heroTitle": "Découvrez Nosy Be avec Endless Cruises & Tours",
+    "heroSubtitle": "Excursions en bateau et véhicule à Madagascar",
+    "circuitsTitle": "Nos Circuits",
+    "circuit1": {
+      "title": "Circuit Îles Vierges",
+      "description": "Explorez les îles vierges de Nosy Be en bateau, avec plongée et plages paradisiaques.",
+      "image": "images/circuit1.jpg"
+    },
+    "circuit2": {
+      "title": "Safari Terrestre",
+      "description": "Découvrez la faune et la flore de Madagascar en véhicule tout-terrain.",
+      "image": "images/circuit2.jpg"
+    },
+    "contactTitle": "Réservez Votre Aventure",
+    "email": "Email",
+    "date": "Date",
+    "message": "Message",
+    "submit": "Envoyer",
+    "footer": "Site créé par : Léo Medias Groupe"
+  },
+  "de": {
+    "home": "Startseite",
+    "circuits": "Rundreisen",
+    "contact": "Kontakt/Reservierung",
+    "heroTitle": "Entdecken Sie Nosy Be mit Endless Cruises & Tours",
+    "heroSubtitle": "Boot- und Fahrzeugtouren auf Madagaskar",
+    "circuitsTitle": "Unsere Rundreisen",
+    "circuit1": {
+      "title": "Jungferninseln-Tour",
+      "description": "Erkunden Sie die Jungferninseln von Nosy Be per Boot, mit Tauchen und paradiesischen Stränden.",
+      "image": "images/circuit1.jpg"
+    },
+    "circuit2": {
+      "title": "Landsafari",
+      "description": "Entdecken Sie die Tier- und Pflanzenwelt Madagaskars mit einem Geländewagen.",
+      "image": "images/circuit2.jpg"
+    },
+    "contactTitle": "Buchen Sie Ihr Abenteuer",
+    "email": "E-Mail",
+    "date": "Datum",
+    "message": "Nachricht",
+    "submit": "Senden",
+    "footer": "Website erstellt von: Léo Medias Groupe"
+  },
+  "it": {
+    "home": "Home",
+    "circuits": "Circuiti",
+    "contact": "Contatti/Prenotazione",
+    "heroTitle": "Scopri Nosy Be con Endless Cruises & Tours",
+    "heroSubtitle": "Escursioni in barca e veicolo a Madagascar",
+    "circuitsTitle": "I Nostri Circuiti",
+    "circuit1": {
+      "title": "Tour Isole Vergini",
+      "description": "Esplora le isole vergini di Nosy Be in barca, con immersioni e spiagge paradisiache.",
+      "image": "images/circuit1.jpg"
+    },
+    "circuit2": {
+      "title": "Safari Terrestre",
+      "description": "Scopri la fauna e la flora del Madagascar in veicolo fuoristrada.",
+      "image": "images/circuit2.jpg"
+    },
+    "contactTitle": "Prenota la Tua Avventura",
+    "email": "Email",
+    "date": "Data",
+    "message": "Messaggio",
+    "submit": "Invia",
+    "footer": "Sito creato da: Léo Medias Groupe"
+  }
+}

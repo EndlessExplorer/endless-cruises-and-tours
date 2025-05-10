@@ -1,0 +1,254 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Endless Cruises & Tours - Excursions professionnelles en bateau et véhicule à Nosy Be, Madagascar.">
+  <meta name="keywords" content="Nosy Be, Madagascar, excursions, bateau, véhicule, Endless Cruises">
+  <meta name="author" content="Léo Medias Groupe">
+  <title>Endless Cruises & Tours - Nosy Be, Madagascar</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-router-dom@6.26.2/dist/umd/react-router-dom.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.25.6/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { createRoot } = ReactDOM;
+    const { BrowserRouter, Routes, Route, Link } = ReactRouterDOM;
+
+    // Contenu simulé (à remplacer par un fetch de content.json dans un déploiement réel)
+    const content = {
+      fr: {
+        home: "Accueil",
+        circuits: "Circuits",
+        contact: "Contact/Réservation",
+        heroTitle: "Découvrez Nosy Be avec Endless Cruises & Tours",
+        heroSubtitle: "Excursions en bateau et véhicule à Madagascar",
+        circuitsTitle: "Nos Circuits",
+        circuit1: { title: "Circuit 1", description: "Description du circuit 1", image: "images/circuit1.jpg" },
+        circuit2: { title: "Circuit 2", description: "Description du circuit 2", image: "images/circuit2.jpg" },
+        contactTitle: "Réservez Votre Aventure",
+        email: "Email",
+        date: "Date",
+        message: "Message",
+        submit: "Envoyer",
+        footer: "Site créé par : Léo Medias Groupe"
+      },
+      de: {
+        home: "Startseite",
+        circuits: "Rundreisen",
+        contact: "Kontakt/Reservierung",
+        heroTitle: "Entdecken Sie Nosy Be mit Endless Cruises & Tours",
+        heroSubtitle: "Boot- und Fahrzeugtouren auf Madagaskar",
+        circuitsTitle: "Unsere Rundreisen",
+        circuit1: { title: "Rundreise 1", description: "Beschreibung der Rundreise 1", image: "images/circuit1.jpg" },
+        circuit2: { title: "Rundreise 2", description: "Beschreibung der Rundreise 2", image: "images/circuit2.jpg" },
+        contactTitle: "Buchen Sie Ihr Abenteuer",
+        email: "E-Mail",
+        date: "Datum",
+        message: "Nachricht",
+        submit: "Senden",
+        footer: "Website erstellt von: Léo Medias Groupe"
+      },
+      it: {
+        home: "Home",
+        circuits: "Circuiti",
+        contact: "Contatti/Prenotazione",
+        heroTitle: "Scopri Nosy Be con Endless Cruises & Tours",
+        heroSubtitle: "Escursioni in barca e veicolo a Madagascar",
+        circuitsTitle: "I Nostri Circuiti",
+        circuit1: { title: "Circuito 1", description: "Descrizione del circuito 1", image: "images/circuit1.jpg" },
+        circuit2: { title: "Circuito 2", description: "Descrizione del circuito 2", image: "images/circuit2.jpg" },
+        contactTitle: "Prenota la Tua Avventura",
+        email: "Email",
+        date: "Data",
+        message: "Messaggio",
+        submit: "Invia",
+        footer: "Sito creato da: Léo Medias Groupe"
+      }
+    };
+
+    // Contexte pour la langue
+    const LanguageContext = React.createContext();
+
+    // Composant de changement de langue
+    const LanguageSwitcher = () => {
+      const { setLanguage } = React.useContext(LanguageContext);
+      return (
+        <div className="flex space-x-4">
+          {[
+            { code: 'fr', flag: '🇫🇷' },
+            { code: 'de', flag: '🇩🇪' },
+            { code: 'it', flag: '🇮🇹' }
+          ].map(({ code, flag }) => (
+            <button
+              key={code}
+              onClick={() => setLanguage(code)}
+              className="flex flex-col items-center text-gray-700 hover:text-blue-600"
+            >
+              <span className="text-2xl">{flag}</span>
+              <span className="text-xs font-semibold">{code.toUpperCase()}</span>
+            </button>
+          ))}
+        </div>
+      );
+    };
+
+    // Composant de navigation
+    const Navbar = () => {
+      const { t } = React.useContext(LanguageContext);
+      return (
+        <nav className="bg-blue-900 text-white p-4 flex justify-between items-center">
+          <div className="text-xl font-bold">Endless Cruises & Tours</div>
+          <div className="flex space-x-4 items-center">
+            <Link to="/" className="hover:text-blue-300">{t.home}</Link>
+            <Link to="/circuits" className="hover:text-blue-300">{t.circuits}</Link>
+            <Link to="/contact" className="hover:text-blue-300">{t.contact}</Link>
+            <LanguageSwitcher />
+          </div>
+        </nav>
+      );
+    };
+
+    // Page d'accueil
+    const Home = () => {
+      const { t } = React.useContext(LanguageContext);
+      return (
+        <div className="min-h-screen">
+          <div className="bg-cover bg-center h-96" style={{ backgroundImage: 'url(images/hero.jpg)' }}>
+            <div className="bg-black bg-opacity-50 h-full flex items-center justify-center">
+              <div className="text-center text-white">
+                <h1 className="text-4xl font-bold mb-4">{t.heroTitle}</h1>
+                <p className="text-xl">{t.heroSubtitle}</p>
+              </div>
+            </div>
+          </div>
+          <div className="container mx-auto p-4 text-center">
+            <p>Contenu personnalisable via content.json</p>
+          </div>
+        </div>
+      );
+    };
+
+    // Page des circuits
+    const Circuits = () => {
+      const { t } = React.useContext(LanguageContext);
+      return (
+        <div className="min-h-screen container mx-auto p-4">
+          <h1 className="text-3xl font-bold mb-4">{t.circuitsTitle}</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="border p-4">
+              <img src={t.circuit1.image} alt={t.circuit1.title} className="w-full h-48 object-cover mb-2" />
+              <h2 className="text-xl font-semibold">{t.circuit1.title}</h2>
+              <p>{t.circuit1.description}</p>
+            </div>
+            <div className="border p-4">
+              <img src={t.circuit2.image} alt={t.circuit2.title} className="w-full h-48 object-cover mb-2" />
+              <h2 className="text-xl font-semibold">{t.circuit2.title}</h2>
+              <p>{t.circuit2.description}</p>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // Page de contact/réservation
+    const Contact = () => {
+      const { t } = React.useContext(LanguageContext);
+      return (
+        <div className="min-h-screen container mx-auto p-4">
+          <h1 className="text-3xl font-bold mb-4">{t.contactTitle}</h1>
+          <div className="max-w-lg mx-auto">
+            <div className="mb-4">
+              <p>Email: <a href="mailto:amidanypatrick@gmail.com" className="text-blue-600">amidanypatrick@gmail.com</a></p>
+              <p>Téléphone: <a href="tel:+261342842256" className="text-blue-600">+261342842256</a></p>
+            </div>
+            <form>
+              <div className="mb-4">
+                <label className="block text-gray-700">{t.email}</label>
+                <input type="email" className="w-full border p-2" placeholder="votre@email.com" required />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700">{t.date}</label>
+                <input type="date" className="w-full border p-2" required />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700">{t.message}</label>
+                <textarea className="w-full border p-2" rows="4" placeholder="Votre message"></textarea>
+              </div>
+              <button type="button" className="bg-blue-900 text-white px-4 py-2 hover:bg-blue-700">{t.submit}</button>
+            </form>
+          </div>
+        </div>
+      );
+    };
+
+    // Composant principal
+    const App = () => {
+      const [language, setLanguage] = React.useState('fr');
+      const t = content[language];
+      return (
+        <LanguageContext.Provider value={{ language, setLanguage, t }}>
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/circuits" element={<Circuits />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+            <footer className="bg-gray-800 text-white text-center p-4">
+              <p>{t.footer}</p>
+            </footer>
+          </BrowserRouter>
+        </LanguageContext.Provider>
+      );
+    };
+
+    // Rendu de l'application
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
